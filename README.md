@@ -134,13 +134,7 @@ def density(x):
 
 
 ```python
-male_df.Weight.plot.hist(bins = binsize, normed = True,  alpha = 0.7, label ="Male weight");
-female_df.Weight.plot.hist(bins = binsize, normed = True, alpha = 0.7, label = 'Female weight');
-plt.legend()
-x,y = density_curve(male_df.Weight)
-plt.plot(x,y)
-x,y = density_curve(female_df.Weight)
-plt.plot(x,y)
+
 ```
 
 
@@ -160,15 +154,10 @@ plt.plot(x,y)
 ```python
 # Record your observations - are these inline with your personal observations?
 
-# The patterns and overlap resemble highly with height distributions
-# Man generally have more weight than women
-# The common region for common weights is around 160 lbs. 
-# Male weight has slightly higher spread than female weight (i.e. more variation)
-# Most females are around 130-140 lbs whereas most men are around 180 pounds. 
 
-#Takeaway
+# Takeaway
 
-# Weight is more suitable to distinguish between males and females than height
+# Whats your takeaway from this experiment ?
 ```
 
 ## Summary
