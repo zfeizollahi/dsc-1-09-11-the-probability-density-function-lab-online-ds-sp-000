@@ -1,12 +1,13 @@
 
 # Probability Density Functions - Lab
 
-In this lab we shall exercise the skills learned in previous lesson to build pdfs for height and weight distributions, both for male and female groups. You are required to build these plots and comment on the results.
+In this lab we shall look at building visualizations known as **density plots** to estimate the probability density for a given set of data. 
 
 ## Objectives:
 
 * Calculate the PDF from given dataset containing real valued random variables
-* Plot density functions and comment on the shape of the plot. 
+* Plot density functions and comment on the shape of the plot
+* Plot density function using seaborn
 
 Let's get started. We shall import all the required libraries for you for this lab. 
 
@@ -41,7 +42,14 @@ print('Female Height sd:' ,female_df.Height.std())
 print('Female Weight mean:', female_df.Weight.mean())
 print('Female Weight sd:' ,female_df.Weight.std())   
 
-
+# Male Height mean: 69.02634590621737
+# Male Height sd: 2.8633622286606517
+# Male Weight mean: 187.0206206581929
+# Male Weight sd: 19.781154516763813
+# Female Height mean: 63.708773603424916
+# Female Height sd: 2.696284015765056
+# Female Weight mean: 135.8600930074687
+# Female Weight sd: 19.022467805319007
 ```
 
     Male Height mean: 69.02634590621737
@@ -54,7 +62,7 @@ print('Female Weight sd:' ,female_df.Weight.std())
     Female Weight sd: 19.022467805319007
 
 
-#### Plot overlapping normalized histograms for male and female heights - use binsize = 10, set alpha level so that overlap can be visualized 
+#### Plot overlapping normalized histograms for male and female heights - use binsize = 10, set alpha level so that overlap can be visualized
 
 
 ```python
@@ -67,7 +75,7 @@ plt.legend()
 
 
 
-    <matplotlib.legend.Legend at 0x112862cf8>
+    <matplotlib.legend.Legend at 0x10a5a38d0>
 
 
 
@@ -75,7 +83,17 @@ plt.legend()
 ![png](index_files/index_5_1.png)
 
 
-#### Write a function density() that takes in a random variable and calculates the density function using `np.hist` and interpolation. The function should return two lists carrying x and y coordinates for plotting the density function
+
+```python
+# Record your observations - are these inline with your personal observations?
+
+# Men tend to have higher values of heights in general than female
+# The most common region for male and femle heights is between 65 - 67 inches (about 5 and a half feet)
+# MAle heights have a slightly higher spread than female heights, hence the male heigh peak is slightly smaller than female height
+# Both heights are normally distributed
+```
+
+#### Write a function density() that takes in a random variable and calculates the density function using `np.hist` and interpolation. The function should return two lists carrying x and y coordinates for plotting the density functio
 
 
 ```python
@@ -100,7 +118,7 @@ def density(x):
 np.random.seed(5)
 mu, sigma = 0, 0.1 # mean and standard deviation
 s = np.random.normal(mu, sigma, 100)
-x,y = density_curve(s)
+x,y = density(s)
 plt.plot(x,y, label = 'test')
 plt.legend()
 ```
@@ -108,12 +126,12 @@ plt.legend()
 
 
 
-    <matplotlib.legend.Legend at 0x114c52d30>
+    <matplotlib.legend.Legend at 0x10acba668>
 
 
 
 
-![png](index_files/index_7_1.png)
+![png](index_files/index_8_1.png)
 
 
 #### Add Overlapping density plots for male and female heights to the histograms plotted earlier
@@ -123,34 +141,22 @@ plt.legend()
 male_df.Height.plot.hist(bins = binsize, normed = True,  alpha = 0.7, label ="Male Height");
 female_df.Height.plot.hist(bins = binsize, normed = True, alpha = 0.7, label = 'Female Height');
 plt.legend()
-x,y = density_curve(male_df.Height)
+x,y = density(male_df.Height)
 plt.plot(x,y)
-x,y = density_curve(female_df.Height)
+x,y = density(female_df.Height)
 plt.plot(x,y)
 ```
 
 
 
 
-    [<matplotlib.lines.Line2D at 0x115a8fb38>]
+    [<matplotlib.lines.Line2D at 0x10e25c9b0>]
 
 
 
 
-![png](index_files/index_9_1.png)
+![png](index_files/index_10_1.png)
 
-
-#### Write your observations in the cell below.
-
-
-```python
-# Record your observations - are these inline with your personal observations?
-
-# Men tend to have higher values of heights in general than female
-# The most common region for male and femle heights is between 65 - 67 inches (about 5 and a half feet)
-# MAle heights have a slightly higher spread than female heights, hence the male heigh peak is slightly smaller than female height
-# Both heights are normally distributed
-```
 
 #### Repeat above exerice for male and female weights
 
@@ -173,7 +179,7 @@ plt.plot(x,y)
 
 
 
-![png](index_files/index_13_1.png)
+![png](index_files/index_12_1.png)
 
 
 #### Write your observations in the cell below.
@@ -191,6 +197,52 @@ plt.plot(x,y)
 #Takeaway
 
 # Weight is more suitable to distinguish between males and females than height
+```
+
+#### Repeat Above experiments in seaborn and compare with your results. 
+
+
+```python
+import seaborn as sns
+sns.distplot(male_df.Height)
+sns.distplot(female_df.Height)
+plt.title('Comparing Heights')
+```
+
+
+
+
+    Text(0.5,1,'Comparing weights')
+
+
+
+
+![png](index_files/index_16_1.png)
+
+
+
+```python
+import seaborn as sns
+sns.distplot(male_df.Weight)
+sns.distplot(female_df.Weight)
+plt.title('Comparing Weights')
+```
+
+
+
+
+    Text(0.5,1,'Comparing Weights')
+
+
+
+
+![png](index_files/index_17_1.png)
+
+
+
+```python
+# Your comments on the two approaches here. 
+# are they similar ? what makes them different if they are ?
 ```
 
 ## Summary
