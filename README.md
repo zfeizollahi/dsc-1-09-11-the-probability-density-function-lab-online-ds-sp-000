@@ -1,12 +1,13 @@
 
 # Probability Density Functions - Lab
 
-In this lab we shall exercise the skills learned in previous lesson to build pdfs for height and weight distributions, both for male and female groups. You are required to build these plots and comment on the results.
+In this lab we shall look at building visualizations known as **density plots** to estimate the probability density for a given set of data. 
 
 ## Objectives:
 
 * Calculate the PDF from given dataset containing real valued random variables
-* Plot density functions and comment on the shape of the plot. 
+* Plot density functions and comment on the shape of the plot
+* Plot density function using seaborn
 
 Let's get started. We shall import all the required libraries for you for this lab. 
 
@@ -29,6 +30,8 @@ data = None
 male_df =  None
 female_df =  None
 
+  
+
 # Male Height mean: 69.02634590621737
 # Male Height sd: 2.8633622286606517
 # Male Weight mean: 187.0206206581929
@@ -49,7 +52,7 @@ female_df =  None
     Female Weight sd: 19.022467805319007
 
 
-#### Plot overlapping normalized histograms for male and female heights - use binsize = 10, set alpha level so that overlap can be visualized 
+#### Plot overlapping normalized histograms for male and female heights - use binsize = 10, set alpha level so that overlap can be visualized
 
 
 ```python
@@ -59,7 +62,7 @@ female_df =  None
 
 
 
-    <matplotlib.legend.Legend at 0x112862cf8>
+    <matplotlib.legend.Legend at 0x10a5a38d0>
 
 
 
@@ -67,7 +70,14 @@ female_df =  None
 ![png](index_files/index_5_1.png)
 
 
-#### Write a function density() that takes in a random variable and calculates the density function using `np.hist` and interpolation. The function should return two lists carrying x and y coordinates for plotting the density function
+
+```python
+# Record your observations - are these inline with your personal observations?
+
+
+```
+
+#### Write a function density() that takes in a random variable and calculates the density function using `np.hist` and interpolation. The function should return two lists carrying x and y coordinates for plotting the density functio
 
 
 ```python
@@ -75,14 +85,13 @@ def density(x):
     
     pass
 
-# Generate test data and test the function
 
-# Uncomment below to test the function
 
+# Generate test data and test the function - uncomment to run the test
 # np.random.seed(5)
 # mu, sigma = 0, 0.1 # mean and standard deviation
 # s = np.random.normal(mu, sigma, 100)
-# x,y = density_curve(s)
+# x,y = density(s)
 # plt.plot(x,y, label = 'test')
 # plt.legend()
 ```
@@ -95,42 +104,43 @@ def density(x):
 
 
 
-    <matplotlib.legend.Legend at 0x114c52d30>
+    <matplotlib.legend.Legend at 0x10acba668>
 
 
 
 
-![png](index_files/index_8_1.png)
+![png](index_files/index_9_1.png)
 
 
 #### Add Overlapping density plots for male and female heights to the histograms plotted earlier
 
 
 ```python
-
+# You code here 
 ```
-
-
-
-
-    [<matplotlib.lines.Line2D at 0x115a8fb38>]
-
-
-
-
-![png](index_files/index_10_1.png)
-
-
-#### Write your observations in the cell below.
 
 
 ```python
-# Record your observations - are these inline with your personal observations?
-
 
 ```
 
+
+
+
+    [<matplotlib.lines.Line2D at 0x10e25c9b0>]
+
+
+
+
+![png](index_files/index_12_1.png)
+
+
 #### Repeat above exerice for male and female weights
+
+
+```python
+# Your code here 
+```
 
 
 ```python
@@ -145,7 +155,7 @@ def density(x):
 
 
 
-![png](index_files/index_14_1.png)
+![png](index_files/index_15_1.png)
 
 
 #### Write your observations in the cell below.
@@ -155,9 +165,49 @@ def density(x):
 # Record your observations - are these inline with your personal observations?
 
 
-# Takeaway
+# So whats the takeaway when comparing male and female heights and weights 
 
-# Whats your takeaway from this experiment ?
+
+```
+
+#### Repeat Above experiments in seaborn and compare with your results. 
+
+
+```python
+
+```
+
+
+
+
+    Text(0.5,1,'Comparing weights')
+
+
+
+
+![png](index_files/index_19_1.png)
+
+
+
+```python
+
+```
+
+
+
+
+    Text(0.5,1,'Comparing Weights')
+
+
+
+
+![png](index_files/index_20_1.png)
+
+
+
+```python
+# Your comments on the two approaches here. 
+# are they similar ? what makes them different if they are ?
 ```
 
 ## Summary
