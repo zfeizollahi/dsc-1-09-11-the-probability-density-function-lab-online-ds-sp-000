@@ -1,15 +1,20 @@
 
-# Probability Density Functions - Lab
+# The Probability Density Function - Lab
 
-In this lab we shall look at building visualizations known as **density plots** to estimate the probability density for a given set of data. 
+## Introduction
+In this lab we will look at building visualizations known as **density plots** to estimate the probability density for a given set of data. 
 
-## Objectives:
+## Objectives
+
+You will be able to:
 
 * Calculate the PDF from given dataset containing real valued random variables
 * Plot density functions and comment on the shape of the plot
-* Plot density function using seaborn
+* Plot density functions using seaborn
 
-Let's get started. We shall import all the required libraries for you for this lab. 
+## Let's get started
+
+We shall import all the required libraries for you for this lab. 
 
 
 ```python
