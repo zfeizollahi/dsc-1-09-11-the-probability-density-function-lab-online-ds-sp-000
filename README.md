@@ -1,5 +1,5 @@
 
-# The Probability Density Function - Lab
+# The Probability Density Function (PDF) - Lab
 
 ## Introduction
 
