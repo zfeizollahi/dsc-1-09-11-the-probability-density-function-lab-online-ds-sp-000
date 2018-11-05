@@ -191,12 +191,8 @@ plt.title('Comparing Heights')
 plt.show()
 ```
 
-    /Users/jeffreyherman/anaconda3/lib/python3.6/site-packages/scipy/stats/stats.py:1713: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
-      return np.add.reduce(sorted[indexer] * weights, axis=axis) / sumval
 
-
-
-![png](index_files/index_16_1.png)
+![png](index_files/index_16_0.png)
 
 
 
@@ -208,12 +204,8 @@ plt.title('Comparing Weights')
 plt.show()
 ```
 
-    /Users/jeffreyherman/anaconda3/lib/python3.6/site-packages/scipy/stats/stats.py:1713: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
-      return np.add.reduce(sorted[indexer] * weights, axis=axis) / sumval
 
-
-
-![png](index_files/index_17_1.png)
+![png](index_files/index_17_0.png)
 
 
 
