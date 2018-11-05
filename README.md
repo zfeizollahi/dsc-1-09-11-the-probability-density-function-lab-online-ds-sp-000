@@ -75,17 +75,11 @@ binsize = 10
 male_df.Height.plot.hist(bins = binsize, normed = True,  alpha = 0.7, label ="Male Height");
 female_df.Height.plot.hist(bins = binsize, normed = True, alpha = 0.7, label = 'Female Height');
 plt.legend()
+plt.show()
 ```
 
 
-
-
-    <matplotlib.legend.Legend at 0x10a5a38d0>
-
-
-
-
-![png](index_files/index_5_1.png)
+![png](index_files/index_5_0.png)
 
 
 
@@ -126,17 +120,11 @@ s = np.random.normal(mu, sigma, 100)
 x,y = density(s)
 plt.plot(x,y, label = 'test')
 plt.legend()
+plt.show()
 ```
 
 
-
-
-    <matplotlib.legend.Legend at 0x10acba668>
-
-
-
-
-![png](index_files/index_8_1.png)
+![png](index_files/index_8_0.png)
 
 
 #### Add Overlapping density plots for male and female heights to the histograms plotted earlier
@@ -150,17 +138,11 @@ x,y = density(male_df.Height)
 plt.plot(x,y)
 x,y = density(female_df.Height)
 plt.plot(x,y)
+plt.show()
 ```
 
 
-
-
-    [<matplotlib.lines.Line2D at 0x10e25c9b0>]
-
-
-
-
-![png](index_files/index_10_1.png)
+![png](index_files/index_10_0.png)
 
 
 #### Repeat above exerice for male and female weights
@@ -170,21 +152,15 @@ plt.plot(x,y)
 male_df.Weight.plot.hist(bins = binsize, normed = True,  alpha = 0.7, label ="Male weight");
 female_df.Weight.plot.hist(bins = binsize, normed = True, alpha = 0.7, label = 'Female weight');
 plt.legend()
-x,y = density_curve(male_df.Weight)
+x,y = density(male_df.Weight)
 plt.plot(x,y)
-x,y = density_curve(female_df.Weight)
+x,y = density(female_df.Weight)
 plt.plot(x,y)
+plt.show()
 ```
 
 
-
-
-    [<matplotlib.lines.Line2D at 0x115c5fa90>]
-
-
-
-
-![png](index_files/index_12_1.png)
+![png](index_files/index_12_0.png)
 
 
 #### Write your observations in the cell below.
@@ -212,13 +188,11 @@ import seaborn as sns
 sns.distplot(male_df.Height)
 sns.distplot(female_df.Height)
 plt.title('Comparing Heights')
+plt.show()
 ```
 
-
-
-
-    Text(0.5,1,'Comparing weights')
-
+    /Users/jeffreyherman/anaconda3/lib/python3.6/site-packages/scipy/stats/stats.py:1713: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+      return np.add.reduce(sorted[indexer] * weights, axis=axis) / sumval
 
 
 
@@ -231,13 +205,11 @@ import seaborn as sns
 sns.distplot(male_df.Weight)
 sns.distplot(female_df.Weight)
 plt.title('Comparing Weights')
+plt.show()
 ```
 
-
-
-
-    Text(0.5,1,'Comparing Weights')
-
+    /Users/jeffreyherman/anaconda3/lib/python3.6/site-packages/scipy/stats/stats.py:1713: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+      return np.add.reduce(sorted[indexer] * weights, axis=axis) / sumval
 
 
 
