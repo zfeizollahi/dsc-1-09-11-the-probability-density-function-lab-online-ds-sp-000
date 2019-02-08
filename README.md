@@ -78,8 +78,12 @@ plt.legend()
 plt.show()
 ```
 
+    /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The 'normed' kwarg is deprecated, and has been replaced by the 'density' kwarg.
+      warnings.warn("The 'normed' kwarg is deprecated, and has been "
 
-![png](index_files/index_5_0.png)
+
+
+![png](index_files/index_5_1.png)
 
 
 
@@ -92,7 +96,7 @@ plt.show()
 # Both heights are normally distributed
 ```
 
-#### Write a function density() that takes in a random variable and calculates the density function using `np.hist` and interpolation. The function should return two lists carrying x and y coordinates for plotting the density functio
+#### Write a function density() that takes in a random variable and calculates the density function using `np.hist` and interpolation. The function should return two lists carrying x and y coordinates for plotting the density function
 
 
 ```python
@@ -141,8 +145,12 @@ plt.plot(x,y)
 plt.show()
 ```
 
+    /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The 'normed' kwarg is deprecated, and has been replaced by the 'density' kwarg.
+      warnings.warn("The 'normed' kwarg is deprecated, and has been "
 
-![png](index_files/index_10_0.png)
+
+
+![png](index_files/index_10_1.png)
 
 
 #### Repeat above exerice for male and female weights
@@ -159,8 +167,12 @@ plt.plot(x,y)
 plt.show()
 ```
 
+    /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The 'normed' kwarg is deprecated, and has been replaced by the 'density' kwarg.
+      warnings.warn("The 'normed' kwarg is deprecated, and has been "
 
-![png](index_files/index_12_0.png)
+
+
+![png](index_files/index_12_1.png)
 
 
 #### Write your observations in the cell below.
@@ -191,8 +203,14 @@ plt.title('Comparing Heights')
 plt.show()
 ```
 
+    /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The 'normed' kwarg is deprecated, and has been replaced by the 'density' kwarg.
+      warnings.warn("The 'normed' kwarg is deprecated, and has been "
+    /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The 'normed' kwarg is deprecated, and has been replaced by the 'density' kwarg.
+      warnings.warn("The 'normed' kwarg is deprecated, and has been "
 
-![png](index_files/index_16_0.png)
+
+
+![png](index_files/index_16_1.png)
 
 
 
@@ -204,8 +222,14 @@ plt.title('Comparing Weights')
 plt.show()
 ```
 
+    /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The 'normed' kwarg is deprecated, and has been replaced by the 'density' kwarg.
+      warnings.warn("The 'normed' kwarg is deprecated, and has been "
+    /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The 'normed' kwarg is deprecated, and has been replaced by the 'density' kwarg.
+      warnings.warn("The 'normed' kwarg is deprecated, and has been "
 
-![png](index_files/index_17_0.png)
+
+
+![png](index_files/index_17_1.png)
 
 
 
