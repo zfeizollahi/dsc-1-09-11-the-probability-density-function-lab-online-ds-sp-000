@@ -33,12 +33,95 @@ Hint : Use your pandas dataframe subsetting skills like loc(), iloc() and groupb
 
 
 ```python
-data = None
-male_df =  None
-female_df =  None
+data = pd.read_csv('weight-height.csv')
+data.head()
+```
 
-  
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Gender</th>
+      <th>Height</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Male</td>
+      <td>73.847017</td>
+      <td>241.893563</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Male</td>
+      <td>68.781904</td>
+      <td>162.310473</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Male</td>
+      <td>74.110105</td>
+      <td>212.740856</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Male</td>
+      <td>71.730978</td>
+      <td>220.042470</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Male</td>
+      <td>69.881796</td>
+      <td>206.349801</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+male_df =  data.loc[data['Gender'] == 'Male']
+female_df =  data.loc[data['Gender'] == 'Female']
+male_height_mean = male_df.Height.mean()
+male_height_sd = male_df.Height.std()
+male_weight_mean = male_df.Weight.mean()
+male_weight_sd = male_df.Weight.std()
+female_height_mean = female_df.Height.mean()
+female_height_sd = female_df.Height.std()
+female_weight_mean = female_df.Weight.mean()
+female_weight_sd = female_df.Weight.std()
+print('Male stats')
+print('Male Height mean: {}'.format(male_height_mean))
+print('Male Height std: {}'.format(male_height_sd))
+print('Male Weight mean: {}'.format(male_weight_mean))
+print('Male Weight std: {}'.format(male_weight_sd))
+print('Female stats')
+print('Female Height mean: {}'.format(female_height_mean))
+print('Female Height std: {}'.format(female_height_sd))
+print('Female Weight mean: {}'.format(female_weight_mean))
+print('Female Weight std: {}'.format(female_weight_sd))
 # Male Height mean: 69.02634590621737
 # Male Height sd: 2.8633622286606517
 # Male Weight mean: 187.0206206581929
@@ -49,14 +132,16 @@ female_df =  None
 # Female Weight sd: 19.022467805319007
 ```
 
-    Male Height mean: 69.02634590621737
-    Male Height sd: 2.8633622286606517
-    Male Weight mean: 187.0206206581929
-    Male Weight sd: 19.781154516763813
-    Female Height mean: 63.708773603424916
-    Female Height sd: 2.696284015765056
-    Female Weight mean: 135.8600930074687
-    Female Weight sd: 19.022467805319007
+    Male stats
+    Male Height mean: 69.02634590621741
+    Male Height std: 2.863362228660647
+    Male Weight mean: 187.0206206581932
+    Male Weight std: 19.7811545167638
+    Female stats
+    Female Height mean: 63.70877360342507
+    Female Height std: 2.696284015765054
+    Female Weight mean: 135.86009300746835
+    Female Weight std: 19.022467805319028
 
 
 #### Plot overlapping normalized histograms for male and female heights - use binsize = 10, set alpha level so that overlap can be visualized
@@ -74,34 +159,71 @@ female_df =  None
 
 
 
-![png](index_files/index_5_1.png)
+![png](index_files/index_6_1.png)
 
 
 
 ```python
-# Record your observations - are these inline with your personal observations?
-
-
+fig = plt.figure(figsize=[8,6])
+plt.hist(male_df['Height'], alpha=.8, label='male', normed=True)
+plt.hist(female_df['Height'], alpha=.5, label='female', normed=True)
+plt.xlabel('inches')
+plt.ylabel('frequency')
+plt.title('Histogram of Male and Female heights')
+plt.legend()
+plt.show()
 ```
+
+    /anaconda3/envs/learn-env/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6521: MatplotlibDeprecationWarning: 
+    The 'normed' kwarg was deprecated in Matplotlib 2.1 and will be removed in 3.1. Use 'density' instead.
+      alternative="'density'", removal="3.1")
+    /anaconda3/envs/learn-env/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6521: MatplotlibDeprecationWarning: 
+    The 'normed' kwarg was deprecated in Matplotlib 2.1 and will be removed in 3.1. Use 'density' instead.
+      alternative="'density'", removal="3.1")
+
+
+
+![png](index_files/index_7_1.png)
+
+
+### Record your observations - are these inline with your personal observations?
+Women tend to be shorter than men, however there is a fair amount of overlap of the tails. the bottom tail for men and upper tail for women. With some men being shorter than most women.
+
 
 #### Write a function density() that takes in a random variable and calculates the density function using `np.hist` and interpolation. The function should return two lists carrying x and y coordinates for plotting the density function
 
 
 ```python
 def density(x):
-    
-    pass
-
-
+    n, bins = np.histogram(x, 10, density=1)
+    pdfx = []
+    pdfy = []
+        # Interpolate through histogram bins 
+        # identify middle point between two neighbouring bins, in terms of x and y coords
+    for k in range(len(n)):
+        pdfx.append((bins[k]+bins[k+1]) / 2)
+        pdfy.append(n[k])
+    return pdfx, pdfy
 
 # Generate test data and test the function - uncomment to run the test
-# np.random.seed(5)
-# mu, sigma = 0, 0.1 # mean and standard deviation
-# s = np.random.normal(mu, sigma, 100)
-# x,y = density(s)
-# plt.plot(x,y, label = 'test')
-# plt.legend()
+np.random.seed(5)
+mu, sigma = 0, 0.1 # mean and standard deviation
+s = np.random.normal(mu, sigma, 100)
+x,y = density(s)
+plt.plot(x,y, label = 'density interpolation')
+plt.legend()
 ```
+
+
+
+
+    <matplotlib.legend.Legend at 0x7f89c86b8e80>
+
+
+
+
+![png](index_files/index_10_1.png)
+
 
 
 ```python
@@ -116,7 +238,7 @@ def density(x):
 
 
 
-![png](index_files/index_9_1.png)
+![png](index_files/index_11_1.png)
 
 
 #### Add Overlapping density plots for male and female heights to the histograms plotted earlier
@@ -124,6 +246,27 @@ def density(x):
 
 ```python
 # You code here 
+fig = plt.figure(figsize=[8,6])
+plt.hist(male_df['Height'], alpha=.8, label='male', density=True)
+plt.hist(female_df['Height'], alpha=.5, label='female', density=True)
+x_f, y_f = density(female_df['Height'])
+x_m, y_m = density(male_df['Height'])
+plt.plot(x_f,y_f, label = 'female density interpolation')
+plt.plot(x_m, y_m, label = 'male density interpolation')
+plt.xlabel('inches')
+plt.ylabel('frequency')
+plt.title('Histogram of Male and Female heights')
+plt.legend()
+plt.show()
+```
+
+
+![png](index_files/index_13_0.png)
+
+
+
+```python
+
 ```
 
 
@@ -139,7 +282,7 @@ def density(x):
 
 
 
-![png](index_files/index_12_1.png)
+![png](index_files/index_15_1.png)
 
 
 #### Repeat above exerice for male and female weights
@@ -147,7 +290,23 @@ def density(x):
 
 ```python
 # Your code here 
+fig = plt.figure(figsize=[8,6])
+plt.hist(male_df['Weight'], alpha=.8, label='male', density=True)
+plt.hist(female_df['Weight'], alpha=.5, label='female', density=True)
+x_f, y_f = density(female_df['Weight'])
+x_m, y_m = density(male_df['Weight'])
+plt.plot(x_f,y_f, label = 'female density interpolation')
+plt.plot(x_m, y_m, label = 'male density interpolation')
+plt.xlabel('inches')
+plt.ylabel('frequency')
+plt.title('Histogram of Male and Female weights')
+plt.legend()
+plt.show()
 ```
+
+
+![png](index_files/index_17_0.png)
+
 
 
 ```python
@@ -162,22 +321,42 @@ def density(x):
 
 
 
-![png](index_files/index_15_1.png)
+![png](index_files/index_18_1.png)
 
 
 #### Write your observations in the cell below.
 
-
-```python
-# Record your observations - are these inline with your personal observations?
-
-
-# So whats the takeaway when comparing male and female heights and weights 
+#### Record your observations - are these inline with your personal observations?
+There is some overlap with weight in males/females than with heights. It's hard to know how this aligns with personal observations since many people do not like to share their weight. Perhaps men do weigh more since they have more muscle often. 
 
 
-```
+### So whats the takeaway when comparing male and female heights and weights 
+Heights we can see visually, weight is harder to know. While there is overlap in weight, it is less so than in heights.
+
 
 #### Repeat Above experiments in seaborn and compare with your results. 
+
+
+```python
+import seaborn as sns
+import scipy.stats as stats
+```
+
+
+```python
+sns.distplot(male_df.Height)
+sns.distplot(female_df.Height)
+plt.title('Comparing Heights')
+plt.show()
+```
+
+    /anaconda3/envs/learn-env/lib/python3.6/site-packages/scipy/stats/stats.py:1713: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+      return np.add.reduce(sorted[indexer] * weights, axis=axis) / sumval
+
+
+
+![png](index_files/index_23_1.png)
+
 
 
 ```python
@@ -192,30 +371,30 @@ def density(x):
 
 
 
-![png](index_files/index_19_1.png)
+![png](index_files/index_24_1.png)
 
 
 
 ```python
-
+sns.distplot(male_df.Weight)
+sns.distplot(female_df.Weight)
+plt.title('Comparing Weights')
+plt.show()
 ```
 
+    /anaconda3/envs/learn-env/lib/python3.6/site-packages/scipy/stats/stats.py:1713: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+      return np.add.reduce(sorted[indexer] * weights, axis=axis) / sumval
 
 
 
-    Text(0.5,1,'Comparing Weights')
+![png](index_files/index_25_1.png)
 
 
+### Your comments on the two approaches here. 
+A lot easier
 
-
-![png](index_files/index_20_1.png)
-
-
-
-```python
-# Your comments on the two approaches here. 
-# are they similar ? what makes them different if they are ?
-```
+### are they similar ? what makes them different if they are ?
+Seaborn has info over which type density curve is plotted - though options do give you a lot of control. Whereas the other is explicit how density curve is calculated.
 
 ## Summary
 
